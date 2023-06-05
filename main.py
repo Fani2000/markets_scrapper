@@ -2,7 +2,11 @@
 
 from events import Events
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 urls = [
     "https://capemarkets.co.za/",
@@ -25,12 +29,37 @@ urls = [
 ]
 
 
-driver = webdriver.Chrome()
-driver.get('https://www.python.org')
+
+
+# events = driver.find_element(By.CLASS_NAME, "eventon_events_list")
+# upcoming_events_text = events.text
+
+# with open('upcomingEvents.txt', "+w") as file:
+#     file.write(title)
+#     file.write(upcoming_events_text)
+
+
+# driver.save_screenshot('snapshot.png')
+
 
 if __name__ == '__main__':
     # events = Events(urls[0]) 
     # events.get_events()
+    driver = webdriver.Chrome('./chromedriver')
+    driver.get(urls[3])
+    title = driver.title
+    wait = WebDriverWait(driver, timeout=10, poll_frequency=1)
+
+    print(title)
+    print(driver.find_element(By.CLASS_NAME, "main-full").text)
+    print(driver.find_elements(By.TAG_NAME, "img"))
+    print(driver.find_elements(By.TAG_NAME, "a")[0])
+
+    try:
+        driver.implicitly_wait(10000)
+    finally:
+        driver.quit()
+
     
 
     print('Running')
