@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+import time
 from events import Events
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -43,22 +45,25 @@ urls = [
 
 
 if __name__ == '__main__':
-    # events = Events(urls[0]) 
-    # events.get_events()
-    driver = webdriver.Chrome('./chromedriver')
-    driver.get(urls[3])
-    title = driver.title
-    wait = WebDriverWait(driver, timeout=10, poll_frequency=1)
+    events = Events(urls[0]) 
+    events.get_events()
+    # driver = webdriver.Firefox()
+    # driver.get(urls[0])
+    # title = driver.title
 
-    print(title)
-    print(driver.find_element(By.CLASS_NAME, "main-full").text)
-    print(driver.find_elements(By.TAG_NAME, "img"))
-    print(driver.find_elements(By.TAG_NAME, "a")[0])
+    # links = driver.find_elements(By.TAG_NAME, 'a')
+    # print(links)
 
-    try:
-        driver.implicitly_wait(10000)
-    finally:
-        driver.quit()
+    # driver.implicitly_wait(120)
+
+    # links[3].click()
+
+
+    # print(title)
+    # print(driver.find_element(By.CLASS_NAME, "main-full").text)
+    # print(driver.find_elements(By.TAG_NAME, "img"))
+    # print(driver.find_elements(By.TAG_NAME, "a")[0])
+
 
     
 
