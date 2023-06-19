@@ -46,6 +46,7 @@ urls = [
 
 if __name__ == '__main__':
     events = Events(urls[0]) 
+    # events.get_events_links()
     events.get_events()
     # driver = webdriver.Firefox()
     # driver.get(urls[0])
